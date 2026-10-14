@@ -1,0 +1,50 @@
+"In Game Actions"
+{
+	"actions"
+	{
+		"Default"
+		{
+			"title"	"#Set_Default"
+			"StickPadGyro"
+			{
+			}
+			"AnalogTrigger"
+			{
+			}
+			"Button"
+			{
+				"extra_1"	"#Action_Extra1"
+				"extra_2"	"#Action_Extra2"
+				"extra_3"	"#Action_Extra3"
+				"extra_4"	"#Action_Extra4"
+				"extra_5"	"#Action_Extra5"
+				"extra_6"	"#Action_Extra6"
+				"extra_7"	"#Action_Extra7"
+				"extra_8"	"#Action_Extra8"
+				"extra_9"	"#Action_Extra9"
+				"extra_10"	"#Action_Extra10"
+				"extra_11"	"#Action_Extra11"
+				"extra_12"	"#Action_Extra12"
+			}
+		}
+	}
+	"localization"
+	{
+		"english"
+		{
+			"Set_Default"	"Default"
+			"Action_Extra1"	"Extra Button 1"
+			"Action_Extra2"	"Extra Button 2"
+			"Action_Extra3"	"Extra Button 3"
+			"Action_Extra4"	"Extra Button 4"
+			"Action_Extra5"	"Extra Button 5"
+			"Action_Extra6"	"Extra Button 6"
+			"Action_Extra7"	"Extra Button 7"
+			"Action_Extra8"	"Extra Button 8"
+			"Action_Extra9"	"Extra Button 9"
+			"Action_Extra10"	"Extra Button 10"
+			"Action_Extra11"	"Extra Button 11"
+			"Action_Extra12"	"Extra Button 12"
+		}
+	}
+}
