@@ -19,6 +19,11 @@ Hollow Knight: Silksong as real, separate buttons:
 - Extra buttons show your controller's real button glyphs.
 - No keyboard keys are involved, so the prompts stay on controller glyphs.
 
+> **Gameplay change:** the mod adds one mechanic that isn't in the vanilla game. Pressing a **Tool Up /
+> Tool Neutral / Tool Down** bind while sprinting interrupts the sprint and uses the tool. It doesn't
+> interrupt a sprint direction change or a dash animation: a tool pressed during those is queued
+> exactly the way vanilla queues it. The vanilla Skill / Tool button behaves as it always has with no inturrupt. If you want your silk skill to inturrupt sprint you must remap your silk skill to Tool Neutral.
+
 ## Supported controllers
 This mod is for controllers that Steam supports through SDL and/or DirectInput and whose extra buttons can
 be mapped in Steam Input. The extra buttons reach the game as Steam Input actions, so **the game must be
