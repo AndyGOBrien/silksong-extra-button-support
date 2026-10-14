@@ -8,7 +8,7 @@ namespace = "andygobrien"
 description = "Use controller extra buttons (back paddles, extra bumpers, macro buttons) as real, rebindable buttons via Steam Input, plus dedicated Tool Up/Neutral/Down binds. No keyboard keys, so prompts stay on controller glyphs."
 
 # Replace this with a correct repo URL if the default is not accurate
-websiteUrl = ""
+websiteUrl = "https://github.com/AndyGOBrien/silksong-extra-button-support"
 containsNsfwContent = false
 
 
@@ -28,6 +28,10 @@ outdir = "./dist"
 source = "./temp"
 target = "/"
 
+[[build.copy]]
+source = "../LICENSE"
+target = "/"
+
 # additional files and directories can be added to the package like this:
 # [[build.copy]]
 # source = "./CHANGELOG.md"
@@ -40,4 +44,4 @@ communities = [ "hollow-knight-silksong" ]
 
 [publish.categories]
 # available categories can be found at https://github.com/thunderstore-io/ecosystem-schema/blob/master/games/data/hollow-knight-silksong.yml
-hollow-knight-silksong = [ "mods" ]
+hollow-knight-silksong = [ "mods", "ai-generated" ]

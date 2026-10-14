@@ -22,7 +22,7 @@ Hollow Knight: Silksong as real, separate buttons:
 > **Gameplay change:** the mod adds one mechanic that isn't in the vanilla game. Pressing a **Tool Up /
 > Tool Neutral / Tool Down** bind while sprinting interrupts the sprint and uses the tool. It doesn't
 > interrupt a sprint direction change or a dash animation: a tool pressed during those is queued
-> exactly the way vanilla queues it. The vanilla Skill / Tool button behaves as it always has with no inturrupt. If you want your silk skill to inturrupt sprint you must remap your silk skill to Tool Neutral.
+> exactly the way vanilla queues it. The vanilla Skill / Tool button behaves as it always has with no interrupt. If you want your silk skill to interrupt sprint you must remap your silk skill to Tool Neutral.
 
 ## Supported controllers
 This mod is for controllers that Steam supports through SDL and/or DirectInput and whose extra buttons can
@@ -43,9 +43,9 @@ Steam Input can map the extra buttons on these controllers, so the mod should wo
 | Controller | Extra buttons | Layout |
 |---|---|---|
 | Flydigi Vader 4 Pro | Back buttons, C, Z | Extra Button Support – Vader 5 Pro. It's published for Steam's generic controller type, so it should show up if Steam treats the Vader 4 Pro as a generic controller. |
-| Steam Deck | L4, R4, L5, R5 | Same buttons as the Steam Controller 2.0, but Steam counts the Deck as a different controller type, so that layout doesn't show up. No Steam Deck layout is published yet. |
-| Xbox Elite Series 2 | Four back paddles | No layout published yet. |
-| DualSense Edge | Two back buttons | No layout published yet. |
+| Steam Deck | L4, R4, L5, R5 | Same buttons as the Steam Controller 2.0, but Steam counts the Deck as a different controller type, so that layout doesn't show up. No Steam Deck layout yet: see **Build your own layout**. |
+| Xbox Elite Series 2 | Four back paddles | No layout yet: see **Build your own layout**. |
+| DualSense Edge | Two back buttons | No layout yet: see **Build your own layout**. |
 
 ## Requirements
 - Silksong on Steam, launched through Steam, with **Steam Input enabled** for your controller (the default).
@@ -57,10 +57,9 @@ Steam Input can map the extra buttons on these controllers, so the mod should wo
    `WINEDLLOVERRIDES="winhttp=n,b" %command%` launch option (or a `winhttp` override in the game's
    prefix via protontricks/winecfg).
 2. In Steam, open Silksong's controller settings (Steam overlay → Controller settings) →
-   **Browse layouts** → **Community**, and apply an **Extra Button Support** layout:
-   - **Extra Button Support – <your controller>** already has that controller's extra buttons bound.
-   - **Extra Button Support – Build your own** is Steam's normal Gamepad layout plus the Extra Button
-     actions. Bind your extra buttons yourself (see **How it works** below).
+   **Browse layouts** → **Community**, and apply the **Extra Button Support** layout for your
+   controller (see **Supported controllers**). It already has the extra buttons bound. If there's none
+   for your controller, see **Build your own layout** below.
 3. In Silksong: **Options → Controller → Remap Controller**. Select an action (or Tool Up / Neutral /
    Down, or Scuttle) and press an extra button.
 
@@ -75,15 +74,15 @@ The mod installs nothing into Steam: the Extra Button actions come from the layo
 other layout the game behaves exactly as without the mod.
 
 ### Binding an extra button in Steam
-1. Apply an **Extra Button Support** layout. If there's no ready layout for your controller, use
-   **Extra Button Support – Build your own**.
+1. Apply an **Extra Button Support** layout, or your own layout from **Build your own layout**.
 2. Choose **Edit Layout** and select the physical button you want to use (a back paddle, for example).
 3. Open **Game Actions** and pick the **Extra Button** whose number matches the button's position (see
    the table below).
 4. Save the layout. In Silksong, go to **Remap Controller**, select an action and press the button.
 
-> **Start from an Extra Button Support layout.** Only those layouts carry the Extra Button actions.
-> Adding game actions to any other layout in Steam's editor removes all of its gamepad bindings.
+> **Steam's editor can't add the Extra Button actions.** Only Extra Button Support layouts, and layouts
+> you've added them to (see **Build your own layout**), carry them. Converting any other layout to game
+> actions in Steam's editor removes all of its gamepad bindings.
 
 ### Extra Button numbering
 Each Extra Button number stands for a position on the controller, not a manufacturer's button name. Use
@@ -105,6 +104,74 @@ Examples from the tested layouts:
 |---|---|
 | Steam Controller 2.0 | L4 = 1, R4 = 2, L5 = 3, R5 = 4 |
 | Flydigi Vader 5 Pro | back paddles = 1–4, extra bumpers = 5 / 6, C = 7, Z = 8, Circle = 9 |
+
+### Build your own layout
+If there's no Extra Button Support layout for your controller, add the Extra Button actions to a layout
+yourself. Steam's editor can't add them, so this is a one-time edit of the layout file. After that you
+bind buttons in Steam as usual.
+
+1. In Steam, open Silksong's controller settings, set up the layout you want to start from (Steam's
+   **Gamepad** template keeps your normal buttons) and save it as a new personal layout.
+2. Exit Steam completely (**Steam → Exit**). Steam rewrites layout files while it's running.
+3. Open the layout file in a text editor. Silksong's personal layouts are in
+   `Steam/steamapps/common/Steam Controller Configs/<account ID>/config/1030300/`, and the file name
+   starts with the name you gave the layout.
+4. Make these changes:
+   - If the file has a top-level `"localization"` block (indented one tab), delete the whole block,
+     from `"localization"` to its closing `}`.
+   - Paste the block below on a new line just above the first line that reads `"group"`.
+   - If the `"title"` or `"description"` line near the top says `#Title` or `#Description`, replace it
+     with your own text.
+5. Save the file, start Steam and apply your layout. Then bind your extra buttons as in **Binding an
+   extra button in Steam**.
+
+```
+	"actions"
+	{
+		"Default"
+		{
+			"title"		"#Set_Default"
+			"legacy_set"		"0"
+			"Button"
+			{
+				"extra_1"		"#Action_Extra1"
+				"extra_2"		"#Action_Extra2"
+				"extra_3"		"#Action_Extra3"
+				"extra_4"		"#Action_Extra4"
+				"extra_5"		"#Action_Extra5"
+				"extra_6"		"#Action_Extra6"
+				"extra_7"		"#Action_Extra7"
+				"extra_8"		"#Action_Extra8"
+				"extra_9"		"#Action_Extra9"
+				"extra_10"		"#Action_Extra10"
+				"extra_11"		"#Action_Extra11"
+				"extra_12"		"#Action_Extra12"
+			}
+		}
+	}
+	"action_layers"
+	{
+	}
+	"localization"
+	{
+		"english"
+		{
+			"Set_Default"		"Default"
+			"Action_Extra1"		"Extra Button 1"
+			"Action_Extra2"		"Extra Button 2"
+			"Action_Extra3"		"Extra Button 3"
+			"Action_Extra4"		"Extra Button 4"
+			"Action_Extra5"		"Extra Button 5"
+			"Action_Extra6"		"Extra Button 6"
+			"Action_Extra7"		"Extra Button 7"
+			"Action_Extra8"		"Extra Button 8"
+			"Action_Extra9"		"Extra Button 9"
+			"Action_Extra10"		"Extra Button 10"
+			"Action_Extra11"		"Extra Button 11"
+			"Action_Extra12"		"Extra Button 12"
+		}
+	}
+```
 
 ## Uninstalling
 1. **Before removing the mod**, open **Remap Controller** and choose **Reset Defaults** (or move every
