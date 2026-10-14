@@ -24,6 +24,8 @@ Hollow Knight: Silksong as real, separate buttons:
 > interrupt a sprint direction change or a dash animation: a tool pressed during those is queued
 > exactly the way vanilla queues it. The vanilla Skill / Tool button behaves as it always has with no interrupt. If you want your silk skill to interrupt sprint you must remap your silk skill to Tool Neutral.
 
+<img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/def2993b-c7c4-4661-b87f-e7e9c8545d5e" />
+
 ## Supported controllers
 This mod is for controllers that Steam supports through SDL and/or DirectInput and whose extra buttons can
 be mapped in Steam Input. The extra buttons reach the game as Steam Input actions, so **the game must be
