@@ -192,3 +192,9 @@ bind buttons in Steam as usual.
 ## Troubleshooting
 Check `BepInEx/LogOutput.log` for lines starting with `[extra]`. `usesSteamInputAPI=True` in a
 `config loaded` line means an Extra Button Support layout is active.
+
+## Credits
+- [ToolKeybinds](https://thunderstore.io/c/hollow-knight-silksong/p/KikuGie/ToolKeybinds/) by KikuGie
+  ([source](https://codeberg.org/KikuGie/silksong-tool-keybinds), MIT) showed how to fire a specific tool
+  slot by overriding `HeroController.GetWillThrowTool`. The Tool Up / Neutral / Down binds build on that
+  idea. No ToolKeybinds code is included.
