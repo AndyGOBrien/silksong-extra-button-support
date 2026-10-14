@@ -1,3 +1,12 @@
+<!-- human-only-edit-section-start -->
+## Human Only Section
+
+I have been a professional software engineer since 2016 and have worked professionally in technology since 2012. However my experience is not traditionally with modding games. Keep that in mind when you use this. This project is (clearly) built with AI assistance. I have personally reviewed all code. Concept, architecture (what little of it there is in this project), design, are all mine.
+
+Any artwork used is AI generated as I am not an artist. If anyone with any artistic talent wants to contribute what little artwork there is in this project please feel free to put up a PR. However, there really is only the project icon for Thunderstore at this point. There is potential for in game controller and button glyphs, scuttle available indicator with button glyph, etc... For art only PRs I will only accept non AI generated art as I can easily prompt LLMs myself for Gen AI imagery and inconography.
+
+<!-- human-only-edit-section-end -->
+
 # Extra Button Support
 
 Use your controller's **extra buttons** (back paddles, extra bumpers, macro buttons such as C/Z) in
@@ -10,10 +19,31 @@ Hollow Knight: Silksong as real, separate buttons:
 - Extra buttons show your controller's real button glyphs.
 - No keyboard keys are involved, so the prompts stay on controller glyphs.
 
-Works through Steam Input, so any controller whose extra buttons Steam can bind is supported.
+## Supported controllers
+This mod is for controllers that Steam supports through SDL and/or DirectInput and whose extra buttons can
+be mapped in Steam Input. The extra buttons reach the game as Steam Input actions, so **the game must be
+launched through Steam** for the mod to work.
+
+Tested with:
+
+| Controller | Community layout |
+|---|---|
+| 8BitDo Ultimate 2 | Extra Button Support - 8BitDo Ultimate 2 |
+| Steam Controller 2.0 | Extra Button Support - Steam Controller 2.0 |
+| Flydigi Vader 5 Pro | Extra Button Support – Vader 5 Pro |
+
+### Should also work (untested)
+Steam Input can map the extra buttons on these controllers, so the mod should work with them, but they haven't been tested. Steam only lists a community layout for the controller type it was made for, so a layout from a similar controller won't always show up.
+
+| Controller | Extra buttons | Layout |
+|---|---|---|
+| Flydigi Vader 4 Pro | Back buttons, C, Z | Extra Button Support – Vader 5 Pro. It's published for Steam's generic controller type, so it should show up if Steam treats the Vader 4 Pro as a generic controller. |
+| Steam Deck | L4, R4, L5, R5 | Same buttons as the Steam Controller 2.0, but Steam counts the Deck as a different controller type, so that layout doesn't show up. No Steam Deck layout is published yet. |
+| Xbox Elite Series 2 | Four back paddles | No layout published yet. |
+| DualSense Edge | Two back buttons | No layout published yet. |
 
 ## Requirements
-- Silksong on Steam, with **Steam Input enabled** for your controller (the default).
+- Silksong on Steam, launched through Steam, with **Steam Input enabled** for your controller (the default).
 - [BepInExPack_Silksong](https://thunderstore.io/c/hollow-knight-silksong/p/silksong_modding/BepInExPack_Silksong/).
 
 ## Setup
@@ -25,25 +55,51 @@ Works through Steam Input, so any controller whose extra buttons Steam can bind 
    **Browse layouts** → **Community**, and apply an **Extra Button Support** layout:
    - **Extra Button Support – <your controller>** already has that controller's extra buttons bound.
    - **Extra Button Support – Build your own** is Steam's normal Gamepad layout plus the Extra Button
-     actions. In **Edit Layout**, bind each extra button to an Extra Button (Game Actions).
+     actions. Bind your extra buttons yourself (see **How it works** below).
 3. In Silksong: **Options → Controller → Remap Controller**. Select an action (or Tool Up / Neutral /
    Down, or Scuttle) and press an extra button.
+
+## How it works
+Steam Input reads the extra buttons. An Extra Button Support layout has twelve Steam Input **game
+actions**, **Extra Button 1** to **Extra Button 12**, alongside the normal gamepad bindings. When you press
+a physical button bound to one of them, Steam tells the mod, and the mod gives the game a new, separate
+controller button. The game treats it like any other button: you can bind it in **Remap Controller**, and
+its prompt shows Steam's picture of the physical button. Your normal gamepad buttons keep working as usual.
 
 The mod installs nothing into Steam: the Extra Button actions come from the layout you apply. On any
 other layout the game behaves exactly as without the mod.
 
+### Binding an extra button in Steam
+1. Apply an **Extra Button Support** layout. If there's no ready layout for your controller, use
+   **Extra Button Support – Build your own**.
+2. Choose **Edit Layout** and select the physical button you want to use (a back paddle, for example).
+3. Open **Game Actions** and pick the **Extra Button** whose number matches the button's position (see
+   the table below).
+4. Save the layout. In Silksong, go to **Remap Controller**, select an action and press the button.
+
+> **Start from an Extra Button Support layout.** Only those layouts carry the Extra Button actions.
+> Adding game actions to any other layout in Steam's editor removes all of its gamepad bindings.
+
 ### Extra Button numbering
-Extra Buttons mean positions, so one set of in-game binds works on every controller:
+Each Extra Button number stands for a position on the controller, not a manufacturer's button name. Use
+the same numbers on every controller and your in-game binds carry over when you switch.
 
-| Extra Button | Position |
+| Steam Input action | Position | Button the mod gives the game |
+|---|---|---|
+| Extra Button 1 | Upper left paddle | Action5 |
+| Extra Button 2 | Upper right paddle | Action6 |
+| Extra Button 3 | Lower left paddle | Action7 |
+| Extra Button 4 | Lower right paddle | Action8 |
+| Extra Button 5 | Extra left bumper | Action9 |
+| Extra Button 6 | Extra right bumper | Action10 |
+| Extra Button 7–12 | Any other extra buttons | Action11, Action12, Button0–Button3 |
+
+Examples from the tested layouts:
+
+| Controller | Extra Button bindings |
 |---|---|
-| 1 / 2 | Upper left / upper right paddle (L4 / R4) |
-| 3 / 4 | Lower left / lower right paddle (L5 / R5) |
-| 5 / 6 | Extra left / right bumper |
-| 7–12 | Any other extra buttons (e.g. Vader 5 Pro: C = 7, Z = 8, Circle = 9) |
-
-> **Start from an Extra Button Support layout.** A plain layout has no Extra Button actions, and
-> adding game actions to one in Steam's editor removes all its gamepad bindings.
+| Steam Controller 2.0 | L4 = 1, R4 = 2, L5 = 3, R5 = 4 |
+| Flydigi Vader 5 Pro | back paddles = 1–4, extra bumpers = 5 / 6, C = 7, Z = 8, Circle = 9 |
 
 ## Uninstalling
 1. **Before removing the mod**, open **Remap Controller** and choose **Reset Defaults** (or move every
